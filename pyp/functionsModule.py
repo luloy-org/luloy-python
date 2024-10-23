@@ -50,9 +50,11 @@ def viewData (args):
   check = (len(args)>=2) or False
   answer=input("New author: ")
   if (answer!=""):
+    prevUser=None
     newuser=None
     with open(dbName, 'r+') as file:
       data = json.load(file)
+      prevUser=data["Author"]
       data["Author"] = answer
       newuser=answer
       file.seek(0)
@@ -60,7 +62,7 @@ def viewData (args):
       file.truncate
       print(data["Author"])
       file.close()
-      log(f"username changed to {newuser}")
+      log(f"username changed from {prevUser} to {newuser}")
   else:
       print(colortext("Missing argument 1","red"))
     
