@@ -20,6 +20,7 @@ def updateUser():
         with open(config["dbName"], 'r') as file:
             data = json.load(file)  # Read and load the JSON file
             config["user"] = data["Author"]
+          file.close()
     except FileNotFoundError:
         print("Error: JSON file not found.")
         sys.exit(1)
