@@ -25,6 +25,7 @@ def executeFunction (str, args):
   user=viewAuthor({})
   if (len(args)>1):
     check=(args[1] in functions) or False
+    try: 
     if (check==True):
       functions[args[1]]["function"](args)
       text = f"{user} has called the function {args[1]} \n with arguments:{args}"
@@ -40,6 +41,8 @@ def executeFunction (str, args):
           text = colortext(a,"green")
           bd=boldtext(text)
           print("Did you mean "+bd)
+    except functionExeFailure:
+     print("Failure executing function")
 
 command_functions={
   "exit": ignore,
