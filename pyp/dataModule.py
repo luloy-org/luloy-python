@@ -15,7 +15,10 @@ def runPro(str, args):
   if (len(args)>0):
     for x in range(1,len(args)):
       run.append(args[x])
+    try:
     subprocess.run(run)
+except comrunFailed:
+    print("Error executing command: ",comrunFailed)
   else:
     colored=colortext("missing arguments")
     bold=boldtext(colored)
