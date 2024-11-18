@@ -29,7 +29,10 @@ def updateUser():
         sys.exit(1)
 
 def function(str, args):
+  try:
     command_functions[str](str, args)
+  except FunctionFailure:
+    print(FunctionFailure)
   
 def notFunction(str, args):
     return False
